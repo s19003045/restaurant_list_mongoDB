@@ -5,6 +5,10 @@ const exphbs = require('express-handlebars')
 const app = express()
 const port = 3000
 
+// import body-parser and setting
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: true }))
+
 // import mongoose and connect to mongoDB
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true })
@@ -65,8 +69,24 @@ app.get('/restaurants/:id/edit', (req, res) => {
 
 // 編輯餐廳動作：POST / restaurants /: id / edit
 app.post('/restaurants/:id/edit', (req, res) => {
-  res.send('編輯餐廳動作')
+
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+
+    restaurant.category = req.body.category
+    restaurant.image = req.body.image
+    restaurant.location = req.body.location
+    restaurant.phone = req.body.phone
+    restaurant.google_map = req.body.google_map
+    restaurant.description = req.body.description
+
+    restaurant.save((err) => {
+      if (err) return console.error(err)
+      return res.redirect(`/restaurants/${req.params.id}`)
+    })
+  })
 })
+
 
 // 新增餐廳頁面：/restaurants/new
 app.get('/restaurants/new', (req, res) => {
