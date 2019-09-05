@@ -19,6 +19,8 @@
 - 新增餐廳
 - 修改餐廳資訊
 
+- 暫無搜尋餐廳功能
+
 ## 後端工具
 
 Node.js、Express、Express-handlebars
@@ -60,6 +62,7 @@ mongoDB、mongoose
   - 以 nodemon 啟動伺服器的指令如下(假設 app.js 是伺服器啟動的進入點)：`nodemon app.js`
 
 - 安裝 mongoDB
+  - 官方下載：https://www.mongodb.com/download-center/community
 
 ## 安裝流程
 
@@ -83,12 +86,15 @@ mongoDB、mongoose
 
 ## 畫面
 
-![首頁..瀏灠所有餐廳]()
+![首頁..瀏灠所有餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/review_all.png)
 
-![單一餐廳詳細資料]()
+![單一餐廳詳細資料](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/review_one.png)
 
-![搜尋結果]()
+![新增餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/add_new_page.png)
 
+![編輯餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/edit_page.png)
+
+![搜尋餐廳]()
 ## 開發人員
 
 [Gary Wu](https://github.com/s19003045)
