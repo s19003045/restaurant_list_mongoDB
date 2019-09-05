@@ -8,7 +8,8 @@
         <a class="btn btn-dark px-4 mr-4" href="/" role="button"><i class="fas fa-angle-left mr-2 fa-lg"></i>Back</a>
         <a class="btn btn-info px-5 mr-4" href="/restaurants/{{{restaurant.id}}}/edit" role="button">Edit</a>
         <form action="/restaurants/{{{restaurant.id}}}/delete" method="POST" class="d-inline mb-4">
-          <button type="submit" class="btn btn-warning">
+          <button type="submit" class="delete-btn btn btn-warning"
+            onclick="return confirm('Are you sure you want to delete this item?');">
             <i class=" fas fa-trash-alt fa-lg"></i><span>Delete</span>
           </button>
         </form>

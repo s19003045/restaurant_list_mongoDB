@@ -128,7 +128,7 @@ app.post('/restaurants/:id/delete', (req, res) => {
 
 // 搜尋餐廳：GET
 app.get('/restaurants/search', (req, res) => {
-  res.send('搜尋餐廳')
+  res.redirect('/')
 })
 
 // ----------------- Server start---------------
