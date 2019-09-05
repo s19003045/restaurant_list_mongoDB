@@ -49,7 +49,10 @@ app.get('/restaurants', (req, res) => {
 
 // review 單一餐廳：GET / restaurants /: id
 app.get('/restaurants/:id', (req, res) => {
-  res.send('review 單一餐廳')
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    return res.render('show', { restaurant: restaurant })
+  })
 })
 
 // 編輯餐廳頁面：GET / restaurants /: id / edit
