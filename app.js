@@ -57,7 +57,10 @@ app.get('/restaurants/:id', (req, res) => {
 
 // 編輯餐廳頁面：GET / restaurants /: id / edit
 app.get('/restaurants/:id/edit', (req, res) => {
-  res.send('編輯餐廳頁面')
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    return res.render('edit', { restaurant: restaurant })
+  })
 })
 
 // 編輯餐廳動作：POST / restaurants /: id / edit
