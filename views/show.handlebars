@@ -4,17 +4,16 @@
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
       {{!-- Edit and Delete icon --}}
-      <div class="row d-flex justify-content-end mr-5">
-        <ul class="list-group list-group-horizontal mb-3 ml-3">
-          <a href="/restaurants/{{{restaurant.id}}}/edit" class="mr-3"><i
-              class="fas fa-edit fa-lg"></i><span>Edit</span></a>
-          <form action="/restaurants/{{{restaurant.id}}}/delete" method="POST">
-            <button type="submit">
-              <i class="fas fa-trash-alt fa-lg"></i><span>Delete</span>
-            </button>
-          </form>
-        </ul>
+      <div class="button-group mb-3">
+        <a class="btn btn-dark px-4 mr-4" href="/" role="button"><i class="fas fa-angle-left mr-2 fa-lg"></i>Back</a>
+        <a class="btn btn-info px-5 mr-4" href="/restaurants/{{{restaurant.id}}}/edit" role="button">Edit</a>
+        <form action="/restaurants/{{{restaurant.id}}}/delete" method="POST" class="d-inline mb-4">
+          <button type="submit" class="btn btn-warning">
+            <i class=" fas fa-trash-alt fa-lg"></i><span>Delete</span>
+          </button>
+        </form>
       </div>
+
       {{!-- restaurant detail --}}
       <p class="mb-1">
         <span class="text-secondary">

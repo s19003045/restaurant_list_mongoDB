@@ -4,29 +4,37 @@
     <div class="col-12 col-md-10 mx-auto">
 
       {{!-- restaurant detail --}}
-      <form action="/restaurants/new" method="POST">
+      <form action="/restaurants" method="POST">
         <p class="mb-4">
+
           <span class="text-secondary">
             餐廳名稱：
           </span>
-          <input type="text" value="" name="name" placeholder="">
+          <span class="input-required">*</span>
+          <input type="text" value="" name="name" placeholder="" required>
+        </p>
+        <p class="mb-4">
+          <span class="text-secondary">
+            餐英文廳名稱：
+          </span>
+          <input type="text" value="" name="name_en" placeholder="">
         </p>
         <p class="mb-4">
           <span class="text-secondary">
             <i class="fas fa-utensils pr-2"></i>
             類別：
           </span>
-          <input type="text" value="" name="category" placeholder="">
+          <span class="input-required">*</span>
+          <input type="text" value="" name="category" placeholder="" required>
         </p>
-
         <p class="mb-4">
           <span class="text-secondary">
             <i class="fas fa-map-marker-alt pr-2"></i>
             地址：
           </span>
-          <input type="text" value="" name="location" placeholder="">
+          <span class="input-required">*</span>
+          <input type="text" value="" name="location" placeholder="" required>
         </p>
-
         <p class="mb-4">
           <span class="text-secondary">
             <i class="fas fa-map-marker-alt pr-2"></i>
@@ -34,22 +42,21 @@
           </span>
           <input type="text" value="" name="google_map" placeholder="">
         </p>
-
         <p class="mb-4">
           <span class="text-secondary">
             <i class="fas fa-mobile-alt pr-2"></i>
             電話：
           </span>
-          <input type="text" value="" name="phone" placeholder="">
+          <span class="input-required">*</span>
+          <input type="text" value="" name="phone" placeholder="" required>
         </p>
-
         <p class="mb-4">
           <span class="text-secondary">
             餐廳描述：
           </span>
-          <textarea cols="100" row="10" name="description" placeholder=""></textarea>
+          <span class="input-required">*</span>
+          <textarea cols="100" row="10" name="description" placeholder="" required></textarea>
         </p>
-
         <p class="mb-4">
           <span class="text-secondary">
             圖片網址：
@@ -57,10 +64,9 @@
           <input type="text" value="" name="image">
         </p>
         <div class="button-group">
-          <button type="submit">Save</button>
-          <button><a href="/">Cancel</a></button>
+          <button type="submit" class="btn btn-info px-5 mr-4">Save</button>
+          <a class="btn btn-dark" href="/" role="button">Cancel</a>
         </div>
-
       </form>
 
     </div>

@@ -72,7 +72,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
 
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
-
+    restaurant.name = req.body.name
     restaurant.category = req.body.category
     restaurant.image = req.body.image
     restaurant.location = req.body.location
@@ -96,13 +96,34 @@ app.get('/restaurant/new', (req, res) => {
 
 // 新增餐廳動作：POST / restaurants
 app.post('/restaurants', (req, res) => {
-  res.send('新增餐廳動作')
+
+  const restaurant = new Restaurant({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    description: req.body.description
+  })
+
+  restaurant.save((err) => {
+    if (err) return console.error(err)
+    return res.redirect('/')
+  })
 })
 
 
 // 刪除餐廳動作：POST / restaurants /: id / delete
 app.post('/restaurants/:id/delete', (req, res) => {
-  res.send('刪除餐廳動作')
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    restaurant.remove((err) => {
+      if (err) return console.error(err)
+      return res.redirect('/')
+    })
+  })
 })
 
 // 搜尋餐廳：GET

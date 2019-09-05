@@ -20,14 +20,11 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
-      {{!-- Edit and Delete icon --}}
-      <div class="row d-flex justify-content-end mr-5">
-        <ul class="list-group list-group-horizontal mb-3 ml-3">
-          <a href="/restaurant/new" class="mr-3">
-            <i class="far fa-plus-square fa-2x mr-2"></i>
-          </a>
-        </ul>
+      {{!-- Add icon --}}
+      <div class="button-group mb-3">
+        <a class="btn btn-info mr-4" href="/restaurant/new" role="button">Add restaurant</a>
       </div>
+
       <div class="card-columns">
         {{#each restaurants}}
         <a href="/restaurants/{{this.id}}" class="text-secondary">

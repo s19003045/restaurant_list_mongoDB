@@ -4,7 +4,7 @@
     <div class="col-12 col-md-10 mx-auto">
 
       {{!-- restaurant detail --}}
-      <form action="/restaurants/{{{restaurant.id}}}/edit" method="POST">
+      <form action="/restaurants/{{{restaurant.id}}}/edit" method="POST" class="mb-4">
         <p class="mb-4">
           <span class="text-secondary">
             餐廳名稱：
@@ -57,12 +57,15 @@
           <input type="text" value="{{{restaurant.image}}}" name="image">
         </p>
         <div class="button-group">
-          <button type="submit">Save</button>
-          <button><a href="/restaurants/{{{restaurant.id}}}">Cancel</a></button>
+          <button type="submit" class="btn btn-info px-5 mr-4">Save</button>
+          <a class="btn btn-dark" href="/restaurants/{{{restaurant.id}}}" role="button">Cancel</a>
         </div>
-
       </form>
-
+      <form action="/restaurants/{{{restaurant.id}}}/delete" method="POST" class="d-inline mb-4">
+        <button type="submit" class="btn btn-warning">
+          <i class=" fas fa-trash-alt fa-lg"></i><span>Delete</span>
+        </button>
+      </form>
     </div>
   </div>
 </div>

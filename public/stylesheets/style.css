@@ -84,6 +84,12 @@ input {
   width: 80%;
 }
 
+/* new.handlebars */
+.input-required {
+  color: red;
+  font-size: 2em;
+}
+
 @media screen and (max-width: 992px) {
   .card img {
     height: 115px;
