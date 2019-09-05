@@ -5,9 +5,6 @@ const exphbs = require('express-handlebars')
 const app = express()
 const port = 3000
 
-// import restaurant.json
-// const restaurant_list = require('./restaurant.json')
-
 
 // setting template engine
 app.engine('handlebars', exphbs('defaultLayout: main'))
@@ -16,38 +13,55 @@ app.set('view engine', 'handlebars')
 // setting static files
 app.use(express.static('public'))
 
-// route setting
+
+// ----------------- Route Setting---------------
+
+// review 所有餐廳：GET / 或 GET / restaurants
 app.get('/', (req, res) => {
-  res.render('index', { restaurantList: restaurant_list.results })
+  res.send('review 所有餐廳')
 })
 
-// route setting for show: using params
+app.get('/restaurants', (req, res) => {
+  res.send('review 所有餐廳')
+})
+
+// review 單一餐廳：GET / restaurants /: id
 app.get('/restaurants/:id', (req, res) => {
-  let restaurant = restaurant_list.results.find(restaurant => restaurant.id.toString() === req.params.id)
-  console.log(restaurant)
-  res.render('show', { restaurant: restaurant })
+  res.send('review 單一餐廳')
 })
 
-// route setting for search: query string
-app.get('/search', (req, res) => {
-  const restaurants = restaurant_list.results.filter(restaurant => restaurant.name.toLowerCase().includes(req.query.keyword.toLowerCase()))
-  const keyword = req.query.keyword
-  res.render('index', { restaurantList: restaurants, keyword: keyword })
+// 編輯餐廳頁面：GET / restaurants /: id / edit
+app.get('/restaurants/:id/edit', (req, res) => {
+  res.send('編輯餐廳頁面')
+})
+
+// 編輯餐廳動作：POST / restaurants /: id / edit
+app.post('/restaurants/:id/edit', (req, res) => {
+  res.send('編輯餐廳動作')
+})
+
+// 新增餐廳頁面：/restaurants/new
+app.get('/restaurants/new', (req, res) => {
+  res.send('新增餐廳頁面')
+})
+
+// 新增餐廳動作：POST / restaurants
+app.post('/restaurants', (req, res) => {
+  res.send('新增餐廳動作')
 })
 
 
-// -------------------
-review 所有餐廳：GET / 或 GET / restaurants
-review 單一餐廳：GET / restaurants /: id
-編輯餐廳頁面：GET / restaurants /: id / edit
-編輯餐廳動作：POST / restaurants /: id / edit
-新增餐廳頁面：/restaurants/new
-新增餐廳動作：POST / restaurants
-刪除餐廳：POST / restaurants /: id / delete
-  搜尋餐廳：GET
+// 刪除餐廳動作：POST / restaurants /: id / delete
+app.post('/restaurants/:id/delete', (req, res) => {
+  res.send('刪除餐廳動作')
+})
 
+// 搜尋餐廳：GET
+app.get('/restaurants/search', (req, res) => {
+  res.send('搜尋餐廳')
+})
 
-
+// ----------------- Server start---------------
 // create server
 app.listen(port, () => {
   console.log(`server listen to http://localhost:${port}`)
