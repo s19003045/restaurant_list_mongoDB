@@ -85,15 +85,19 @@ mongoDB、mongoose
   `connect to mongoDB successifully !`
 
 ## 畫面
-
+- 瀏灠所有餐廳
 ![首頁..瀏灠所有餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/review_all.png)
 
+- 單一餐廳詳細資料
 ![單一餐廳詳細資料](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/review_one.png)
 
+- 新增餐廳
 ![新增餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/add_new_page.png)
 
+- 編輯餐廳
 ![編輯餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/edit_page.png)
 
+- 搜尋餐廳：暫無此功能
 ![搜尋餐廳]()
 ## 開發人員
 
