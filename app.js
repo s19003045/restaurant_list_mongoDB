@@ -89,8 +89,9 @@ app.post('/restaurants/:id/edit', (req, res) => {
 
 
 // 新增餐廳頁面：/restaurants/new
-app.get('/restaurants/new', (req, res) => {
-  res.send('新增餐廳頁面')
+app.get('/restaurant/new', (req, res) => {
+  // res.send('新增 Todo 頁面')
+  res.render('new')
 })
 
 // 新增餐廳動作：POST / restaurants
