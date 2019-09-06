@@ -77,13 +77,23 @@ mongoDB、mongoose
   `npm install express`
 - 使用 npm 安裝 express-handlebars：
   `npm install express-handlebars`
+- 使用 npm 安裝 body-parser：
+  `npm install body-parser`
+- 使用 npm 安裝 mongoose：
+  `npm install mongoose`
+  
+- 將餐廳種子清單儲存至 mongoDB 資料庫：
+  `cd 專案資料夾/models/seeds`
+  `node restaurantSeeder.js`
 - 使用 package.json 的 scripts 執行：
   `npm run dev`
 - server 啟動成功：
   `server listen to http://localhost:3000`
 - 連線 mongoDB 成功：
   `connect to mongoDB successifully !`
-
+- 啟動瀏灠器：
+  網址：http://localhost:3000
+  
 ## 畫面
 - 瀏灠所有餐廳
 ![首頁..瀏灠所有餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/review_all.png)
