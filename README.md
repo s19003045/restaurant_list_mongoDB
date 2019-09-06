@@ -83,8 +83,8 @@ mongoDB、mongoose
   `npm install mongoose`
   
 - 將餐廳種子清單儲存至 mongoDB 資料庫：
-  `cd 專案資料夾/models/seeds`
-  `node restaurantSeeder.js`
+  - `cd 專案資料夾/models/seeds`
+  - `node restaurantSeeder.js`
 - 使用 package.json 的 scripts 執行：
   `npm run dev`
 - server 啟動成功：
