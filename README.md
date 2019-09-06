@@ -97,6 +97,9 @@ mongoDB、mongoose
 - 編輯餐廳
 ![編輯餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/edit_page.png)
 
+- 刪除餐廳
+![刪除餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/delete_alert.png)
+
 - 搜尋餐廳：暫無此功能
 ![搜尋餐廳]()
 ## 開發人員
