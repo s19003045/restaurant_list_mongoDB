@@ -4,6 +4,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const app = express()
 const port = 3000
+const handlebars = require('handlebars')
 
 // import body-parser and setting
 const bodyParser = require('body-parser')
@@ -16,6 +17,7 @@ const db = mongoose.connection
 
 // import mongoose model
 const Restaurant = require('./models/restaurant')
+const restaurantObj = require('./models/restaurantObj')
 
 // actions if connect error
 db.on('err', (err) => {
@@ -63,7 +65,7 @@ app.get('/restaurants/:id', (req, res) => {
 app.get('/restaurants/:id/edit', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
-    return res.render('edit', { restaurant: restaurant })
+    return res.render('edit', { restaurant })
   })
 })
 
@@ -91,7 +93,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
 // 新增餐廳頁面：/restaurants/new
 app.get('/restaurant/new', (req, res) => {
   // res.send('新增 Todo 頁面')
-  res.render('new')
+  res.render('new', { restaurantObj: restaurantObj })
 })
 
 // 新增餐廳動作：POST / restaurants
@@ -127,9 +129,11 @@ app.post('/restaurants/:id/delete', (req, res) => {
 })
 
 // 搜尋餐廳：GET
-app.get('/restaurants/search', (req, res) => {
-  res.redirect('/')
-})
+// app.get('/restaurants/search', (req, res) => {
+//   // res.redirect('/')
+//   const searchString = req.
+
+// })
 
 // ----------------- Server start---------------
 // create server

@@ -1,75 +1,29 @@
 <div class="container mt-5">
-
   <div class="row mb-5">
     <div class="col-12 col-md-10 mx-auto">
 
-      {{!-- restaurant detail --}}
-      <form action="/restaurants" method="POST">
-        <p class="mb-4">
+      {{!-- restaurant input --}}
+      <form action="/restaurants" method="POST" class="form">
+        {{#each restaurantObj}}
+        <div class="form-group row">
+          <label for="{{@key}}">{{this.title}}：
+            <span class="input-required">
+              {{this.tag}}
+            </span></label>
+          <div class="col-10 ml-auto">
+            <input type="text" class="form-control" id="" placeholder="" name="{{@key}}"
+              {{#if this.required}}required{{/if}}>
+            <small id="" class="form-text text-muted">{{this.hint}}</small>
+          </div>
+        </div>
+        {{/each}}
 
-          <span class="text-secondary">
-            餐廳名稱：
-          </span>
-          <span class="input-required">*</span>
-          <input type="text" value="" name="name" placeholder="" required>
-        </p>
-        <p class="mb-4">
-          <span class="text-secondary">
-            餐英文廳名稱：
-          </span>
-          <input type="text" value="" name="name_en" placeholder="">
-        </p>
-        <p class="mb-4">
-          <span class="text-secondary">
-            <i class="fas fa-utensils pr-2"></i>
-            類別：
-          </span>
-          <span class="input-required">*</span>
-          <input type="text" value="" name="category" placeholder="" required>
-        </p>
-        <p class="mb-4">
-          <span class="text-secondary">
-            <i class="fas fa-map-marker-alt pr-2"></i>
-            地址：
-          </span>
-          <span class="input-required">*</span>
-          <input type="text" value="" name="location" placeholder="" required>
-        </p>
-        <p class="mb-4">
-          <span class="text-secondary">
-            <i class="fas fa-map-marker-alt pr-2"></i>
-            Google Map：
-          </span>
-          <input type="text" value="" name="google_map" placeholder="">
-        </p>
-        <p class="mb-4">
-          <span class="text-secondary">
-            <i class="fas fa-mobile-alt pr-2"></i>
-            電話：
-          </span>
-          <span class="input-required">*</span>
-          <input type="text" value="" name="phone" placeholder="" required>
-        </p>
-        <p class="mb-4">
-          <span class="text-secondary">
-            餐廳描述：
-          </span>
-          <span class="input-required">*</span>
-          <textarea cols="100" row="10" name="description" placeholder="" required></textarea>
-        </p>
-        <p class="mb-4">
-          <span class="text-secondary">
-            圖片網址：
-          </span>
-          <input type="text" value="" name="image">
-        </p>
+        {{!-- button for save and cancel --}}
         <div class="button-group">
           <button type="submit" class="btn btn-info px-5 mr-4">Save</button>
           <a class="btn btn-dark" href="/" role="button">Cancel</a>
         </div>
       </form>
-
     </div>
   </div>
 </div>
-
