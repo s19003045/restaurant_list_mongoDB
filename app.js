@@ -19,6 +19,13 @@ const db = mongoose.connection
 const Restaurant = require('./models/restaurant')
 const restaurantObj = require('./models/restaurantObj')
 
+// import method-override and use it
+const methodOverride = require('method-override')
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'))
+// app.use('/',methodOverride('_method'))
+// app.use()裡的第一個參數 path 被省略，因為 path 的預設是 '/'，所以，會針對收到的每一個 request 執行。 
+
 // actions if connect error
 db.on('err', (err) => {
   if (err) return console.error(err)
@@ -39,101 +46,9 @@ app.use(express.static('public'))
 
 
 // ----------------- Route Setting---------------
+app.use('/', require('./routes/home'))
 
-// review 所有餐廳：GET / 或 GET / restaurants
-app.get('/', (req, res) => {
-  // res.send('review 所有餐廳')
-  Restaurant.find((err, restaurants) => {
-    if (err) return console.error(err)
-    res.render('index', { restaurants: restaurants })
-  })
-})
-
-app.get('/restaurants', (req, res) => {
-  res.redirect('/')
-})
-
-// review 單一餐廳：GET / restaurants /: id
-app.get('/restaurants/:id', (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
-    if (err) return console.error(err)
-    return res.render('show', { restaurant: restaurant })
-  })
-})
-
-// 編輯餐廳頁面：GET / restaurants /: id / edit
-app.get('/restaurants/:id/edit', (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
-    if (err) return console.error(err)
-    return res.render('edit', { restaurant })
-  })
-})
-
-// 編輯餐廳動作：POST / restaurants /: id / edit
-app.post('/restaurants/:id/edit', (req, res) => {
-
-  Restaurant.findById(req.params.id, (err, restaurant) => {
-    if (err) return console.error(err)
-    restaurant.name = req.body.name
-    restaurant.category = req.body.category
-    restaurant.image = req.body.image
-    restaurant.location = req.body.location
-    restaurant.phone = req.body.phone
-    restaurant.google_map = req.body.google_map
-    restaurant.description = req.body.description
-
-    restaurant.save((err) => {
-      if (err) return console.error(err)
-      return res.redirect(`/restaurants/${req.params.id}`)
-    })
-  })
-})
-
-
-// 新增餐廳頁面：/restaurants/new
-app.get('/restaurant/new', (req, res) => {
-  // res.send('新增 Todo 頁面')
-  res.render('new', { restaurantObj: restaurantObj })
-})
-
-// 新增餐廳動作：POST / restaurants
-app.post('/restaurants', (req, res) => {
-
-  const restaurant = new Restaurant({
-    name: req.body.name,
-    name_en: req.body.name_en,
-    category: req.body.category,
-    image: req.body.image,
-    location: req.body.location,
-    phone: req.body.phone,
-    google_map: req.body.google_map,
-    description: req.body.description
-  })
-
-  restaurant.save((err) => {
-    if (err) return console.error(err)
-    return res.redirect('/')
-  })
-})
-
-
-// 刪除餐廳動作：POST / restaurants /: id / delete
-app.post('/restaurants/:id/delete', (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
-    if (err) return console.error(err)
-    restaurant.remove((err) => {
-      if (err) return console.error(err)
-      return res.redirect('/')
-    })
-  })
-})
-
-// 搜尋餐廳：GET
-// app.get('/restaurants/search', (req, res) => {
-//   // res.redirect('/')
-//   const searchString = req.
-
-// })
+app.use('/restaurants', require('./routes/restaurants'))
 
 // ----------------- Server start---------------
 // create server
