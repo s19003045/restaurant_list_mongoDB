@@ -50,6 +50,8 @@ app.use('/', require('./routes/home'))
 
 app.use('/restaurants', require('./routes/restaurants'))
 
+app.use('/search', require('./routes/search'))
+
 // ----------------- Server start---------------
 // create server
 app.listen(port, () => {

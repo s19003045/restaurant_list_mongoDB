@@ -8,11 +8,143 @@ const Restaurant = require('../models/restaurant')
 
 // review 所有餐廳：GET / 或 GET / restaurants
 router.get('/', (req, res) => {
-  // res.send('review 所有餐廳')
-  Restaurant.find((err, restaurants) => {
-    if (err) return console.error(err)
-    res.render('index', { restaurants: restaurants })
-  })
+  const target = req.query.target
+  const sort = req.query.sort
+
+  console.log(target)
+  console.log(sort)
+  console.log(Boolean(req.query))
+  // Restaurant.find()
+  //   .sort
+  //   .exec((err,restaurants)=>{
+
+
+
+  //   })
+  if (!target == undefined) {
+    switch (target) {
+      case 'name':
+        switch (sort) {
+          case 'asc':
+            Restaurant.find({})
+              .sort({ name: 'asc' })
+              .exec((err, restaurants) => {
+                if (err) return console.error(err)
+                res.render('index', { restaurants: restaurants })
+              })
+            break
+          case 'desc':
+            Restaurant.find({})
+              .sort({ name: 'desc' })
+              .exec((err, restaurants) => {
+                if (err) return console.error(err)
+                res.render('index', { restaurants: restaurants })
+              })
+            break
+        }
+      case 'category':
+        switch (sort) {
+          case 'asc':
+            Restaurant.find({})
+              .sort({ category: 'asc' })
+              .exec((err, restaurants) => {
+                if (err) return console.error(err)
+                res.render('index', { restaurants: restaurants })
+              })
+            break
+          case 'desc':
+            Restaurant.find({})
+              .sort({ category: 'desc' })
+              .exec((err, restaurants) => {
+                if (err) return console.error(err)
+                res.render('index', { restaurants: restaurants })
+              })
+            break
+        }
+      case 'rating':
+        switch (sort) {
+          case 'asc':
+            Restaurant.find({})
+              .sort({ rating: 'asc' })
+              .exec((err, restaurants) => {
+                if (err) return console.error(err)
+                res.render('index', { restaurants: restaurants })
+              })
+            break
+          case 'desc':
+            Restaurant.find({})
+              .sort({ rating: 'desc' })
+              .exec((err, restaurants) => {
+                if (err) return console.error(err)
+                res.render('index', { restaurants: restaurants })
+              })
+            break
+        }
+      default:
+
+    }
+  } else {
+    Restaurant.find({})
+      .sort({})
+      .exec((err, restaurants) => {
+        if (err) return console.error(err)
+        res.render('index', { restaurants: restaurants })
+      })
+  }
+
+  // switch (req.query.sort) {
+  //   case 'rating':
+  //     Restaurant.find({})
+  //       .sort({ rating: 'asc' })
+  //       .exec((err, restaurants) => {
+  //         if (err) return console.error(err)
+  //         res.render('index', { restaurants: restaurants })
+  //       })
+  //     break
+  //   case 'asc':
+  //     Restaurant.find({})
+  //       .sort({ name: 'asc' })
+  //       .exec((err, restaurants) => {
+  //         if (err) return console.error(err)
+  //         res.render('index', { restaurants: restaurants })
+  //       })
+  //     break
+  //   case 'desc':
+  //     Restaurant.find({})
+  //       .sort({ name: 'desc' })
+  //       .exec((err, restaurants) => {
+  //         if (err) return console.error(err)
+  //         res.render('index', { restaurants: restaurants })
+  //       })
+  //     break
+  //   default:
+  //     Restaurant.find({})
+  //       .sort({})
+  //       .exec((err, restaurants) => {
+  //         if (err) return console.error(err)
+  //         res.render('index', { restaurants: restaurants })
+  //       })
+  // }
+
+  // if (req.query.sort === 'rating') {
+
+  //   Restaurant.find({})
+  //     .sort({ rating: 'asc' })
+  //     .exec((err, restaurants) => {
+  //       if (err) return console.error(err)
+  //       res.render('index', { restaurants: restaurants })
+  //     })
+  // } else {
+  //   Restaurant.find({})
+  //     .sort({ name: 'asc' })
+  //     .exec((err, restaurants) => {
+  //       if (err) return console.error(err)
+  //       res.render('index', { restaurants: restaurants })
+  //     })
+  // }
+
+
 })
+
 
 module.exports = router

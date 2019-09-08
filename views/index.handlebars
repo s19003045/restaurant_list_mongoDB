@@ -2,15 +2,28 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-      <form action="/resstaurants/search" method="GET">
+      <form action="/search" method="GET">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
-          <input type="text" name="keyword" name="search" class="form-control" placeholder="輸入餐廳、分類"
+          <input type="text" name="keyword" name="search" class="form-control" placeholder="輸入餐廳、分類、地點"
             aria-label="Restaurant Name..." value="{{keyword}}" aria-describedby="search-button">
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button">
               <i class="fas fa-search"></i>
             </button>
+          </div>
+        </div>
+        <div class="dropdown mt-2">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            排序
+          </button>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/search?keyword={{keyword}}&key=rating&order=desc">依評價</a>
+            <a class="dropdown-item" href="/search?keyword={{keyword}}&key=name&order=asc">依餐廳名稱</a>
+            <a class="dropdown-item" href="/search?keyword={{keyword}}&key=category&order=asc">依餐廳類別</a>
+            <a class="dropdown-item" href="/search?keyword={{keyword}}&key=location&order=asc">依餐廳位置</a>
           </div>
         </div>
       </form>
@@ -23,10 +36,9 @@
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       {{!-- Add icon --}}
-      <div class="button-group mb-3">
+      <div class="btn-group mb-3">
         <a class="btn btn-info mr-4" href="/restaurants/new" role="button">Add restaurant</a>
       </div>
-
 
       <div class="card-columns">
         {{#each restaurants}}
@@ -39,11 +51,15 @@
               <div class="restaurant-category mb-1">
                 <i class="fas fa-utensils pr-2"></i> {{this.category}}
               </div>
+              <div class="restaurant-category mb-1">
+                {{this.location}}
+              </div>
 
               <span class="badge badge-pill badge-danger font-weight-normal">
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
+
             </div>
           </div>
         </a>

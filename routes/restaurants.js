@@ -13,7 +13,8 @@ router.get('/', (req, res) => {
   return res.redirect('/')
 })
 
-// 新增餐廳頁面：/new
+
+// 新增餐廳頁面：GET /new
 router.get('/new', (req, res) => {
   // res.send('新增 Todo 頁面')
   res.render('new', { restaurantObj })
@@ -86,11 +87,5 @@ router.post('/:id/delete', (req, res) => {
   })
 })
 
-// 搜尋餐廳：GET
-// router.get('/search', (req, res) => {
-//   // res.redirect('/')
-//   const searchString = req.
-
-// })
 
 module.exports = router
