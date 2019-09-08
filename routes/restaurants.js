@@ -10,19 +10,12 @@ const restaurantObj = require('../models/restaurantObj')
 // import handlebars
 const handlebars = require('handlebars')
 
-// setting for handlebars helper
-handlebars.registerHelper('checkInputName', function (item) {
-  return item
-})
-
-
 
 // -----------route setting -----------
 // review 所有餐廳：GET /
 router.get('/', (req, res) => {
   return res.redirect('/')
 })
-
 
 // 新增餐廳頁面：GET /new
 router.get('/new', (req, res) => {
@@ -97,5 +90,5 @@ router.delete('/:id/delete', (req, res) => {
   })
 })
 
-
+// exports router
 module.exports = router
