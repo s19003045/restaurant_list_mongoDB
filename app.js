@@ -44,6 +44,15 @@ app.set('view engine', 'handlebars')
 // setting static files
 app.use(express.static('public'))
 
+// setting for handlebars helper
+// handlebars.registerHelper('inputChecked', function (key, keySelect) {
+//   if (key === keySelect) {
+//     return true
+//   }
+// })
+handlebars.registerHelper("ifEquals", function (v1, v2, options) {
+  return v1 === v2 ? options.fn(this) : options.inverse(this);
+})
 
 // ----------------- Route Setting---------------
 app.use('/', require('./routes/home'))

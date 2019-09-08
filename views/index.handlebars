@@ -13,18 +13,46 @@
             </button>
           </div>
         </div>
-        <div class="dropdown mt-2">
-          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            排序
-          </button>
-
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/search?keyword={{keyword}}&key=rating&order=desc">依評價</a>
-            <a class="dropdown-item" href="/search?keyword={{keyword}}&key=name&order=asc">依餐廳名稱</a>
-            <a class="dropdown-item" href="/search?keyword={{keyword}}&key=category&order=asc">依餐廳類別</a>
-            <a class="dropdown-item" href="/search?keyword={{keyword}}&key=location&order=asc">依餐廳位置</a>
+        <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">排序依據</span>
           </div>
+          <label class="btn btn-primary {{#ifEquals 
+            'name' query.key}}active{{/ifEquals}}">
+            <input type="radio" name="key" id="option1" autocomplete="off" value="name" {{#ifEquals 
+            'name' query.key}}checked{{/ifEquals}}>依餐廳名稱
+          </label>
+          <label class="btn btn-primary {{#ifEquals 
+            'rating' query.key}}active{{/ifEquals}}">
+            <input type="radio" name="key" id="option2" autocomplete="off" value="rating" {{#ifEquals 
+            'rating' query.key}}checked{{/ifEquals}}>依評價
+          </label>
+          <label class="btn btn-primary {{#ifEquals 
+            'category' query.key}}active{{/ifEquals}}">
+            <input type="radio" name="key" id="option3" autocomplete="off" value="category" {{#ifEquals 
+            'category' query.key}}checked{{/ifEquals}}>依餐廳類別
+          </label>
+          <label class="btn btn-primary {{#ifEquals 
+            'location' query.key}}active{{/ifEquals}}">
+            <input type="radio" name="key" id="option3" autocomplete="off" value="location" {{#ifEquals 
+            'location' query.key}}checked{{/ifEquals}}>依餐廳地點
+          </label>
+        </div>
+        <hr>
+        <div class="btn-group btn-group-toggle mt-0" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">排列順序</span>
+          </div>
+          <label class="btn btn-primary {{#ifEquals 
+            'asc' query.order}}active{{/ifEquals}}">
+            <input type="radio" name="order" id="option1" autocomplete="off" value="asc" {{#ifEquals 
+                      'asc' query.order}}checked{{/ifEquals}}>升
+          </label>
+          <label class="btn btn-primary {{#ifEquals 
+            'desc' query.order}}active{{/ifEquals}}">
+            <input type="radio" name="order" id="option1" autocomplete="off" value="desc" {{#ifEquals 
+                                  'desc' query.order}}checked{{/ifEquals}}>降
+          </label>
         </div>
       </form>
     </div>
@@ -32,7 +60,7 @@
 </div>
 
 <!-- restaurant list -->
-<div class="container mt-5">
+<div class=" container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       {{!-- Add icon --}}

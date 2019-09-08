@@ -7,6 +7,16 @@ const Restaurant = require('../models/restaurant')
 
 const restaurantObj = require('../models/restaurantObj')
 
+// import handlebars
+const handlebars = require('handlebars')
+
+// setting for handlebars helper
+handlebars.registerHelper('checkInputName', function (item) {
+  return item
+})
+
+
+
 // -----------route setting -----------
 // review 所有餐廳：GET /
 router.get('/', (req, res) => {
@@ -57,7 +67,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // 編輯餐廳動作：POST  /: id / edit
-router.post('/:id/edit', (req, res) => {
+router.put('/:id/edit', (req, res) => {
 
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
@@ -77,7 +87,7 @@ router.post('/:id/edit', (req, res) => {
 })
 
 // 刪除餐廳動作：POST /: id / delete
-router.post('/:id/delete', (req, res) => {
+router.delete('/:id/delete', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.remove((err) => {

@@ -5,15 +5,23 @@ const router = express.Router()
 // import mongoose Schema, named Restaurant
 const Restaurant = require('../models/restaurant')
 
+// import handlebars
+const handlebars = require('handlebars')
+
+
+handlebars.registerHelper("ifEquals", function (v1, v2, options) {
+  return v1 === v2 ? options.fn(this) : options.inverse(this);
+})
 
 // 搜尋餐廳：GET
 router.get('/', (req, res) => {
-  console.log(req.query)
+  // console.log(req.query)
+  console.log(typeof (req.query.key))
   const searchKeyword = req.query.keyword
 
-  const sortByKey = req.query.key
-  const sortByOrder = req.query.order
-  const sortObj = new Object()
+  const sortByKey = req.query.key || 'name' //預設 key 為 name
+  const sortByOrder = req.query.order || 'desc'  //預設 order 為 desc
+  const sortObj = {}
   sortObj[sortByKey] = sortByOrder
   console.log(sortObj)
 
@@ -29,96 +37,8 @@ router.get('/', (req, res) => {
           return item
         }
       })
-      return res.render('index', { restaurants: restaurantsFilter, keyword: searchKeyword })
+      return res.render('index', { restaurants: restaurantsFilter, keyword: searchKeyword, query: req.query })
     })
 })
-
-// router.get('/', (req, res) => {
-//   const target = req.query.target
-//   const sort = req.query.sort
-
-//   console.log(target)
-//   console.log(sort)
-//   console.log(Boolean(req.query))
-//   // Restaurant.find()
-//   //   .sort
-//   //   .exec((err,restaurants)=>{
-
-
-
-//   //   })
-//   if (!target == undefined) {
-//     switch (target) {
-//       case 'name':
-//         switch (sort) {
-//           case 'asc':
-//             Restaurant.find({})
-//               .sort({ name: 'asc' })
-//               .exec((err, restaurants) => {
-//                 if (err) return console.error(err)
-//                 res.render('index', { restaurants: restaurants })
-//               })
-//             break
-//           case 'desc':
-//             Restaurant.find({})
-//               .sort({ name: 'desc' })
-//               .exec((err, restaurants) => {
-//                 if (err) return console.error(err)
-//                 res.render('index', { restaurants: restaurants })
-//               })
-//             break
-//         }
-//       case 'category':
-//         switch (sort) {
-//           case 'asc':
-//             Restaurant.find({})
-//               .sort({ category: 'asc' })
-//               .exec((err, restaurants) => {
-//                 if (err) return console.error(err)
-//                 res.render('index', { restaurants: restaurants })
-//               })
-//             break
-//           case 'desc':
-//             Restaurant.find({})
-//               .sort({ category: 'desc' })
-//               .exec((err, restaurants) => {
-//                 if (err) return console.error(err)
-//                 res.render('index', { restaurants: restaurants })
-//               })
-//             break
-//         }
-//       case 'rating':
-//         switch (sort) {
-//           case 'asc':
-//             Restaurant.find({})
-//               .sort({ rating: 'asc' })
-//               .exec((err, restaurants) => {
-//                 if (err) return console.error(err)
-//                 res.render('index', { restaurants: restaurants })
-//               })
-//             break
-//           case 'desc':
-//             Restaurant.find({})
-//               .sort({ rating: 'desc' })
-//               .exec((err, restaurants) => {
-//                 if (err) return console.error(err)
-//                 res.render('index', { restaurants: restaurants })
-//               })
-//             break
-//         }
-//       default:
-
-//     }
-//   } else {
-//     Restaurant.find({})
-//       .sort({})
-//       .exec((err, restaurants) => {
-//         if (err) return console.error(err)
-//         res.render('index', { restaurants: restaurants })
-//       })
-//   }
-
-// })
-
 
 module.exports = router
