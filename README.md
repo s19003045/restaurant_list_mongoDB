@@ -13,13 +13,16 @@
 
 ## 特色
 
+- MVC model & RESTful
+
+## 網站功能
+
 - 首頁：瀏灠所有餐廳資訊
 - 瀏灠單一餐廳詳細資訊
 - 刪除餐廳
 - 新增餐廳
 - 修改餐廳資訊
-
-- 暫無搜尋餐廳功能
+- 搜尋餐廳功能
 
 ## 後端工具
 
@@ -110,8 +113,9 @@ mongoDB、mongoose
 - 刪除餐廳
 ![刪除餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/delete_alert.png)
 
-- 搜尋餐廳：暫無此功能
-![搜尋餐廳]()
+- 搜尋餐廳
+![搜尋餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/search_function.png)
+
 ## 開發人員
 
 [Gary Wu](https://github.com/s19003045)
