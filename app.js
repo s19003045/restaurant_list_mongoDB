@@ -49,6 +49,9 @@ app.use(session({
   saveUninitialized: true,
 }))
 
+// 建立 flash 實例並使用它
+app.use(flash())
+
 // passport initialize
 app.use(passport.initialize())
 
@@ -58,6 +61,26 @@ app.use(passport.session())
 // 載入 config 中的 passport.js
 // 把上面宣告的 passport 實例當成下面的參數
 require('./config/passport')(passport)
+
+// 登入後可以取得使用者的資訊方便我們在 view 裡面直接使用
+app.use((req, res, next) => {
+  // req.user 及 res.isAuthenticated 是在以 passport 驗證使用者成功之後才會被建立的。
+  // res.locals 常用來用在將被渲染的 view(s)，只用在該次的 request / response cycle (if any)
+  // 目前 res.locals.isAuthenticated 用在 main.handlebars 中，顯示 login 或 logout button
+
+  res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
+
+  // 新增二個 res.locals 的 property for flash message
+  // 當以 flash 為 middleware 時，任何傳進來的 req 都有 req.flash 這方法
+  // req.flash('info', 'Flash is back!') 
+  // req.flash 的二個參數：info 是 key， 'Flash is back!'是 value
+  // 這邊的 success_msg 及 failure_msg 可以放進所有的 view 使用
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.failure_msg = req.flash('failure_msg')
+
+  next()
+})
 
 // actions if connect error
 db.on('err', (err) => {
@@ -91,6 +114,7 @@ app.use('/search', require('./routes/search'))
 
 app.use('/users', require('./routes/users'))
 
+// 第三方登入
 // app.use('/auth', require('./routes/auths')
 // )
 

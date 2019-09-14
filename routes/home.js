@@ -5,9 +5,11 @@ const router = express.Router()
 // import mongoose Schema, named Restaurant
 const Restaurant = require('../models/restaurant')
 
+// import autenticated ：確認使用者是否已登入
+const { authenticated } = require('../config/auth')
 
 // review 所有餐廳：GET / 或 GET / restaurants
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   const target = req.query.target
   const sort = req.query.sort
 
