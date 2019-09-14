@@ -4,6 +4,7 @@ const router = express.Router()
 const passport = require('passport')
 const User = require('../models/user')
 const bcrypt = require('bcryptjs')
+const userObj = require('../models/userObj')
 
 // login
 router.get('/login', (req, res) => {
@@ -26,7 +27,7 @@ router.post('/login', (req, res, next) => {
 })
 
 router.get('/register', (req, res) => {
-  res.render('register')
+  res.render('register', { userObj })
 })
 
 router.post('/register', (req, res) => {
@@ -61,7 +62,7 @@ router.post('/register', (req, res) => {
             newUser.save()
               .then(user => {
                 req.flash('success_msg', '你已成功註冊')
-                console.log(req.flash)
+                console.log(req.flash.success_msg)
                 res.redirect('/users/login')
               })
               .catch(err => console.log(err))

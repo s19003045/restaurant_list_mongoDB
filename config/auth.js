@@ -7,7 +7,7 @@ module.exports = {
       return next()
     }
     // 在 app.js 已先設定 res.locals.failure_msg = req.flash('failure_msg')，所以下面設定的 value 就會傳值進去 failure_msg
-
+    req.flash('failure_msg', '請先登入')
     res.redirect('/users/login')
   }
 }

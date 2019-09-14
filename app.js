@@ -115,8 +115,8 @@ app.use('/search', require('./routes/search'))
 app.use('/users', require('./routes/users'))
 
 // 第三方登入
-// app.use('/auth', require('./routes/auths')
-// )
+app.use('/auth', require('./routes/auths')
+)
 
 
 // ----------------- Server start---------------
