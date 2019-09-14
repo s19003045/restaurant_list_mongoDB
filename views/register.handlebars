@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body mt-2 mb-5">
+      <h2 class="text-center mb-4">Register</h2>
+      <!-- 引用 messages 這個 partial view -->
+      {{> messages}}
+      <form action="/users/register" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="name" class="form-control" id="name" name="name" placeholder="Enter name" value="{{{name}}}">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"
+            value="{{{email}}}">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Create password"
+            value="{{{password}}}">
+        </div>
+        <div class="form-group">
+          <label for="password2">Confirm password</label>
+          <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password"
+            value="{{{password2}}}">
+        </div>
+        <button class="btn btn-primary btn-block mb-3" type="submit">Register</button>
+        <p class="lead mt-5">Have a account ? <a href="/users/login">Login</a></p>
+      </form>
+    </div>
+  </div>
+</div>
