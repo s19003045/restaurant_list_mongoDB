@@ -31,7 +31,7 @@ restaurantsList.results.forEach(element => {
     phone: element.phone,
     google_map: element.google_map,
     rating: element.rating,
-    description: element.description
+    description: element.description,
   }, (err, restaurants) => {
     if (err) return console.error(err)
 
