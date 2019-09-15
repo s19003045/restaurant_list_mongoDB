@@ -125,14 +125,13 @@ connect-flash、dotenv
 - 搜尋餐廳
   ![搜尋餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/search_function.png)
 
+- 註冊頁面
+  ![註冊頁面](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/register_page.png)
+
 - 登入頁面
-  ![登入頁面](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/search_function.png)
+  ![登入頁面](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/login_page.png)
 
-- 登出頁面
-  ![登出頁面](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/search_function.png)
 
-- 第三方登入
-  ![第三方登入](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/search_function.png)
 
 ## 開發人員
 
