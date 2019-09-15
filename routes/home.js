@@ -12,6 +12,7 @@ const { authenticated } = require('../config/auth')
 router.get('/', authenticated, (req, res) => {
   const target = req.query.target
   const sort = req.query.sort
+  console.log(req.user._id)
 
   console.log(target)
   console.log(sort)
@@ -22,7 +23,7 @@ router.get('/', authenticated, (req, res) => {
       case 'name':
         switch (sort) {
           case 'asc':
-            Restaurant.find({})
+            Restaurant.find({ userId: req.user._id })
               .sort({ name: 'asc' })
               .exec((err, restaurants) => {
                 if (err) return console.error(err)
@@ -30,7 +31,7 @@ router.get('/', authenticated, (req, res) => {
               })
             break
           case 'desc':
-            Restaurant.find({})
+            Restaurant.find({ userId: req.user._id })
               .sort({ name: 'desc' })
               .exec((err, restaurants) => {
                 if (err) return console.error(err)
@@ -41,7 +42,7 @@ router.get('/', authenticated, (req, res) => {
       case 'category':
         switch (sort) {
           case 'asc':
-            Restaurant.find({})
+            Restaurant.find({ userId: req.user._id })
               .sort({ category: 'asc' })
               .exec((err, restaurants) => {
                 if (err) return console.error(err)
@@ -49,7 +50,7 @@ router.get('/', authenticated, (req, res) => {
               })
             break
           case 'desc':
-            Restaurant.find({})
+            Restaurant.find({ userId: req.user._id })
               .sort({ category: 'desc' })
               .exec((err, restaurants) => {
                 if (err) return console.error(err)
@@ -60,7 +61,7 @@ router.get('/', authenticated, (req, res) => {
       case 'rating':
         switch (sort) {
           case 'asc':
-            Restaurant.find({})
+            Restaurant.find({ userId: req.user._id })
               .sort({ rating: 'asc' })
               .exec((err, restaurants) => {
                 if (err) return console.error(err)
@@ -68,7 +69,7 @@ router.get('/', authenticated, (req, res) => {
               })
             break
           case 'desc':
-            Restaurant.find({})
+            Restaurant.find({ userId: req.user._id })
               .sort({ rating: 'desc' })
               .exec((err, restaurants) => {
                 if (err) return console.error(err)
@@ -80,7 +81,7 @@ router.get('/', authenticated, (req, res) => {
 
     }
   } else {
-    Restaurant.find({})
+    Restaurant.find({ userId: req.user._id })
       .sort({})
       .exec((err, restaurants) => {
         if (err) return console.error(err)

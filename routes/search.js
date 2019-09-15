@@ -7,14 +7,15 @@ const Restaurant = require('../models/restaurant')
 
 // import handlebars
 const handlebars = require('handlebars')
-
+// import autenticated ：確認使用者是否已登入
+const { authenticated } = require('../config/auth')
 
 handlebars.registerHelper("ifEquals", function (v1, v2, options) {
   return v1 === v2 ? options.fn(this) : options.inverse(this);
 })
 
 // 搜尋餐廳：GET
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   // console.log(req.query)
   console.log(typeof (req.query.key))
   const searchKeyword = req.query.keyword
@@ -26,7 +27,7 @@ router.get('/', (req, res) => {
   console.log(sortObj)
 
   // 使用定義好的 Schema 去 mongoDB 篩選
-  Restaurant.find({})
+  Restaurant.find({ userId: req.user._id })
     .sort(sortObj)
     .exec((err, restaurants) => {
       if (err) return console.error(err)

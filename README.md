@@ -23,11 +23,17 @@
 - 新增餐廳
 - 修改餐廳資訊
 - 搜尋餐廳功能
+- 使用者註冊/登入/登出
+- 第三方認證登入
+- 可依據登入使用者，列出該使用者建立的餐廳資訊
 
 ## 後端工具
 
 Node.js、Express、Express-handlebars
-mongoDB、mongoose
+mongoDB、mongoose、method-override、
+express-session、passport、
+passport-local、passport-facebook、bcryptjs、
+connect-flash、dotenv
 
 ## 環境建置
 
@@ -76,18 +82,20 @@ mongoDB、mongoose
   `cd restaurant_list`
 - 安裝 npm：
   `npm install 10.16.3`
-- 使用 npm 安裝 express：
-  `npm install express`
-- 使用 npm 安裝 express-handlebars：
-  `npm install express-handlebars`
-- 使用 npm 安裝 body-parser：
-  `npm install body-parser`
-- 使用 npm 安裝 mongoose：
-  `npm install mongoose`
-  
+- 使用 npm 安裝 所有套件：
+  `npm install express express-handlebars handlebars body-parser mongoose method-override passport passport-local passport-facebook express-session bcryptjs connect-flash dotenv`
+
 - 將餐廳種子清單儲存至 mongoDB 資料庫：
+
   - `cd 專案資料夾/models/seeds`
-  - `node restaurantSeeder.js`
+  - `node user_restau_seeder.js`
+
+- 資料夾新增 .env 檔案，在檔案中設定環境變數，在開發階段使用。請至 facebook developer 申請 Client_ID、Client_SECRET，並存到 .env 檔案中。
+
+  - `FACEBOOK_ID='xxxxxxxxxxxxx'`
+  - `FACEBOOK_SECRET='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'`
+  - `FACEBOOK_CALLBACK='http://localhost:3000/auth/facebook/callback'`
+
 - 使用 package.json 的 scripts 執行：
   `npm run dev`
 - server 啟動成功：
@@ -96,25 +104,35 @@ mongoDB、mongoose
   `connect to mongoDB successifully !`
 - 啟動瀏灠器：
   網址：http://localhost:3000
-  
+
 ## 畫面
+
 - 瀏灠所有餐廳
-![首頁..瀏灠所有餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/review_all.png)
+  ![首頁..瀏灠所有餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/review_all.png)
 
 - 單一餐廳詳細資料
-![單一餐廳詳細資料](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/review_one.png)
+  ![單一餐廳詳細資料](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/review_one.png)
 
 - 新增餐廳
-![新增餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/add_new_page.png)
+  ![新增餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/add_new_page.png)
 
 - 編輯餐廳
-![編輯餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/edit_page.png)
+  ![編輯餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/edit_page.png)
 
 - 刪除餐廳
-![刪除餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/delete_alert.png)
+  ![刪除餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/delete_alert.png)
 
 - 搜尋餐廳
-![搜尋餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/search_function.png)
+  ![搜尋餐廳](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/search_function.png)
+
+- 登入頁面
+  ![登入頁面](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/search_function.png)
+
+- 登出頁面
+  ![登出頁面](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/search_function.png)
+
+- 第三方登入
+  ![第三方登入](https://github.com/s19003045/restaurant_list_mongoDB/blob/master/images_for_github/search_function.png)
 
 ## 開發人員
 

@@ -94,6 +94,12 @@ input {
   font-size: 1em;
 }
 
+.login-form,
+.register-form {
+  position: relative;
+  top: -330px;
+}
+
 @media screen and (max-width: 992px) {
   .card img {
     height: 115px;
