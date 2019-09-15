@@ -79,7 +79,7 @@ module.exports = passport => {
               newUser.save()
                 .then((err, user) => {
                   if (err) return console.error(err)
-                  res.redirect('/')
+                  return res.redirect('/')
                 })
                 .catch(err => console.log(err))
             })
